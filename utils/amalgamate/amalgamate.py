@@ -105,11 +105,8 @@ class Amalgamation(object):
 
 
 def _is_within(match, matches):
-    for m in matches:
-        if match.start() > m.start() and \
-                match.end() < m.end():
-            return True
-    return False
+    return any(match.start() > m.start() and \
+                match.end() < m.end() for m in matches)
 
 
 class TranslationUnit(object):
